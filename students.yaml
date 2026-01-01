@@ -12,7 +12,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: auto
     show-sql: true
     properties:
       hibernate:
@@ -29,4 +29,5 @@ management:
     web:
       exposure:
         include: "*"
+
 
