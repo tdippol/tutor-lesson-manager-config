@@ -3,9 +3,9 @@ server:
 
 spring:
   application:
-    name: students
+    name: "students"
   datasource:
-    url: jdbc:oracle:thin:@//localhost:1521/ORCLPDB1
+    url: "jdbc:oracle:thin:@//localhost:1521/ORCLPDB1"
     username: MAX
     password: oracle
     driver-class-name: oracle.jdbc.OracleDriver
@@ -29,5 +29,4 @@ management:
     web:
       exposure:
         include: "*"
-
 
