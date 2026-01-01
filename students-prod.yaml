@@ -18,6 +18,13 @@ spring:
       hibernate:
         format_sql: true
 
+  spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
 logging:
   level:
     org.hibernate.SQL: debug
@@ -29,4 +36,5 @@ management:
     web:
       exposure:
         include: "*"
+
 
