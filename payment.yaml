@@ -17,13 +17,13 @@ spring:
     properties:
       hibernate:
         format_sql: true
-    rabbitmq:
-      host: "localhost"
-      port: 5672
-      username: "guest"
-      password: "guest"
-    flyway:
-      enabled: "true"
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
+  flyway:
+    enabled: "true"
 
 logging:
   level:
@@ -37,4 +37,5 @@ management:
       exposure:
 
         include: "*"
+
 
