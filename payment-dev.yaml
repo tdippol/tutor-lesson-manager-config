@@ -24,7 +24,8 @@ spring:
     username: "guest"
     password: "guest"
   flyway:
-    enabled: "true"
+    enabled: true
+    repair: true
 
 logging:
   level:
@@ -38,5 +39,6 @@ management:
       exposure:
 
         include: "*"
+
 
 
