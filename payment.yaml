@@ -4,8 +4,6 @@ server:
 spring:
   application:
     name: "payment"
-  config:
-    import: "optional:configserver:http://localhost:8071/"
 
   datasource:
     url: "jdbc:oracle:thin:@//localhost:1521/ORCLPDB1"
@@ -33,20 +31,9 @@ logging:
     org.hibernate.orm.jdbc.bind: trace
     root: INFO
 
-  profiles:
-    active: "dev"
-
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    fetchRegistry: true
-    registerWithEureka: true
-    serviceUrl:
-      defaultZone: http://localhost:8070/eureka/
-
 management:
   endpoints:
     web:
       exposure:
+
         include: "*"
