@@ -10,13 +10,13 @@ spring:
     username: LESSONS
     password: oracle
     driver-class-name: oracle.jdbc.OracleDriver
-    jpa:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
       hibernate:
-        ddl-auto: validate
-      show-sql: true
-      properties:
-        hibernate:
-          format_sql: true
+        format_sql: true
     rabbitmq:
       host: "localhost"
       port: 5672
@@ -37,3 +37,4 @@ management:
       exposure:
 
         include: "*"
+
