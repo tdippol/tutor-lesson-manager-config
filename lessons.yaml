@@ -6,7 +6,7 @@ spring:
     name: "lessons"
   datasource:
     url: "jdbc:oracle:thin:@//localhost:1521/ORCLPDB1"
-    username: PAYMENT
+    username: LESSONS
     password: oracle
     driver-class-name: oracle.jdbc.OracleDriver
   jpa:
@@ -36,3 +36,4 @@ management:
       exposure:
 
         include: "*"
+
