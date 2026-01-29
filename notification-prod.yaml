@@ -15,7 +15,7 @@ spring:
     name: notification
 
   profiles:
-    active: "dev"
+    active: "prod"
 
   datasource:
     url: "jdbc:oracle:thin:@//localhost:1521/ORCLPDB1"
@@ -76,3 +76,4 @@ management:
     web:
       exposure:
         include: "*"
+
