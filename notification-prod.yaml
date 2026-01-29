@@ -1,0 +1,78 @@
+server:
+  port: 9020
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+
+spring:
+  application:
+    name: notification
+
+  profiles:
+    active: "dev"
+
+  datasource:
+    url: "jdbc:oracle:thin:@//localhost:1521/ORCLPDB1"
+    username: NOTIFICATION
+    password: oracle
+    driver-class-name: oracle.jdbc.OracleDriver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
+
+  flyway:
+    enabled: true
+    repair: true
+
+
+  mail:
+    host: localhost
+    port: 1025
+    properties:
+      mail.smtp.auth: false
+      mail.smtp.starttls.enable: false
+
+notification:
+  mail:
+    from: "Tutor Lesson Manager <no-reply@tutorlm.local>"
+  scheduler:
+    fixedDelayMs: 2000
+    batchSize: 20
+    maxAttempts: 10
+    backoffBaseSeconds: 30
+    backoffMaxSeconds: 3600
+    processingTtlSeconds: 300   # recovery PROCESSING dopo 5 min
+  rabbit:
+    exchange: lessons.exchange
+    queue: notification.queue
+    dlx: notification.dlx
+    dlq: notification.queue.dlq
+    bindings: lesson.#,credits.#
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.orm.jdbc.bind: trace
+    root: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
