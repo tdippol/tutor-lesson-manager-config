@@ -26,6 +26,8 @@ spring:
     properties:
       hibernate:
         format_sql: true
+      hibernate.type.preferred_instant_jdbc_type: TIMESTAMP
+      hibernate.jdbc.time_zone: UTC
 
   rabbitmq:
     host: "localhost"
@@ -73,5 +75,4 @@ management:
     web:
       exposure:
         include: "*"
-
 
