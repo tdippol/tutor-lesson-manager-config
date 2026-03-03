@@ -24,8 +24,6 @@ spring:
   flyway:
     enabled: "true"
 
-  config:
-    import: "optional:configserver:http://localhost:8071/"
   cloud:
     openfeign:
       circuitbreaker:
@@ -44,9 +42,6 @@ spring:
           catalog: # opzionale: override per un singolo client
             connectTimeout: 1500
             readTimeout: 3000
-
-  profiles:
-    active: "dev"
 
 eureka:
   instance:
@@ -100,6 +95,7 @@ feign:
 outbox:
   publisher:
     fixedDelayMs: 2000
+
 
 
 
