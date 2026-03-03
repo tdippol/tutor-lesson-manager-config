@@ -24,6 +24,18 @@ spring:
   flyway:
     enabled: "true"
 
+  config:
+    import: "optional:configserver:http://localhost:8071/"
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+
 logging:
   level:
     org.hibernate.SQL: debug
@@ -35,6 +47,8 @@ management:
     web:
       exposure:
         include: "*"
+        
+
 
 
 
