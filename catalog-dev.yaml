@@ -22,7 +22,7 @@ spring:
     username: "guest"
     password: "guest"
   flyway:
-    enabled: "true"
+    enabled: true
 
   config:
     import: "optional:configserver:http://localhost:8071/"
@@ -48,6 +48,7 @@ management:
       exposure:
         include: "*"
         
+
 
 
 
