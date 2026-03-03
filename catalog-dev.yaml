@@ -23,10 +23,8 @@ spring:
     password: "guest"
   flyway:
     enabled: true
-
-  config:
-    import: "optional:configserver:http://localhost:8071/"
-
+    repair:  true
+    
 eureka:
   instance:
     prefer-ip-address: true
@@ -48,6 +46,7 @@ management:
       exposure:
         include: "*"
         
+
 
 
 
