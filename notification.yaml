@@ -47,6 +47,9 @@ spring:
       mail.smtp.auth: false
       mail.smtp.starttls.enable: false
 
+    profiles:
+    active: "dev"
+
 notification:
   mail:
     from: "Tutor Lesson Manager <no-reply@tutorlm.local>"
@@ -75,5 +78,6 @@ management:
     web:
       exposure:
         include: "*"
+
 
 
