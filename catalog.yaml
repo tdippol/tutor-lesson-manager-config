@@ -24,12 +24,6 @@ spring:
   flyway:
     enabled: true
 
-  config:
-    import: "optional:configserver:http://localhost:8071/"
-
-  profiles:
-    active: "dev"
-
 eureka:
   instance:
     prefer-ip-address: true
@@ -51,6 +45,7 @@ management:
       exposure:
         include: "*"
         
+
 
 
 
