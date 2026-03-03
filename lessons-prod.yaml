@@ -24,9 +24,7 @@ spring:
     password: "guest"
   flyway:
     enabled: "true"
-
-  config:
-    import: "optional:configserver:http://localhost:8071/"
+  
   cloud:
     openfeign:
       circuitbreaker:
@@ -46,7 +44,6 @@ spring:
             connectTimeout: 1500
             readTimeout: 3000
 
- 
 eureka:
   instance:
     prefer-ip-address: true
@@ -105,6 +102,7 @@ management:
     web:
       exposure:
         include: "*"
+
 
 
 
