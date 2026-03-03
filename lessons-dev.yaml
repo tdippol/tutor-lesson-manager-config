@@ -43,9 +43,7 @@ spring:
             connectTimeout: 1500
             readTimeout: 3000
 
-  profiles:
-    active: "dev"
-
+  
 eureka:
   instance:
     prefer-ip-address: true
@@ -104,4 +102,5 @@ management:
     web:
       exposure:
         include: "*"
+
 
