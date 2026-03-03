@@ -1,3 +1,6 @@
+server:
+  port: 9000
+
 spring:
   application:
     name: lessons
@@ -78,3 +81,4 @@ feign:
 outbox:
   publisher:
     fixedDelayMs: 2000
+
