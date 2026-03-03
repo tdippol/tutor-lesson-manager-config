@@ -99,3 +99,10 @@ outbox:
   publisher:
     fixedDelayMs: 2000
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
