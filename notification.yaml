@@ -47,7 +47,7 @@ spring:
       mail.smtp.auth: false
       mail.smtp.starttls.enable: false
 
-    profiles:
+  profiles:
     active: "dev"
 
 notification:
@@ -78,6 +78,7 @@ management:
     web:
       exposure:
         include: "*"
+
 
 
 
