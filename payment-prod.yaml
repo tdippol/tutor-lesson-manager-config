@@ -10,6 +10,7 @@ spring:
     username: PAYMENT
     password: oracle
     driver-class-name: oracle.jdbc.OracleDriver
+  
   jpa:
     hibernate:
       ddl-auto: validate
@@ -17,6 +18,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  
   rabbitmq:
     host: "localhost"
     port: 5672
@@ -43,8 +45,6 @@ logging:
   pattern:
     level: "%5p [%X{correlationId}]"
 
-  
-
 eureka:
   instance:
     prefer-ip-address: true
@@ -59,6 +59,3 @@ management:
     web:
       exposure:
         include: "*"
-
-
-
