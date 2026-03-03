@@ -2,6 +2,26 @@ spring:
   application:
     name: lessons
 
+  datasource:
+    url: "jdbc:oracle:thin:@//localhost:1521/ORCLPDB1"
+    username: LESSONS
+    password: oracle
+    driver-class-name: oracle.jdbc.OracleDriver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
+  flyway:
+    enabled: "true"
+
   config:
     import: "optional:configserver:http://localhost:8071/"
   cloud:
@@ -78,3 +98,4 @@ feign:
 outbox:
   publisher:
     fixedDelayMs: 2000
+
