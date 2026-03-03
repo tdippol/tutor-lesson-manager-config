@@ -1,39 +1,80 @@
-server:
-  port: 9000
-
 spring:
   application:
-    name: "lessons"
-  datasource:
-    url: "jdbc:oracle:thin:@//localhost:1521/ORCLPDB1"
-    username: LESSONS
-    password: oracle
-    driver-class-name: oracle.jdbc.OracleDriver
-  jpa:
-    hibernate:
-      ddl-auto: validate
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-  rabbitmq:
-    host: "localhost"
-    port: 5672
-    username: "guest"
-    password: "guest"
-  flyway:
-    enabled: "true"
+    name: lessons
+
+  config:
+    import: "optional:configserver:http://localhost:8071/"
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
+        alphanumeric-ids:
+          enabled: true
+      client:
+        config:
+          default:
+            connectTimeout: 3000     # ms: tempo max per aprire la connessione TCP
+            readTimeout: 5000        # ms: tempo max in attesa della risposta
+            loggerLevel: basic       # opzionale: NONE/BASIC/HEADERS/FULL
+          students: # opzionale: override per un singolo client
+            connectTimeout: 1500
+            readTimeout: 3000
+          catalog: # opzionale: override per un singolo client
+            connectTimeout: 1500
+            readTimeout: 3000
+
+  profiles:
+    active: "dev"
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+
+resilience4j:
+  timelimiter:
+    instances:
+      StudentsFeignClientfetchStudentsDetailStringInteger:
+        timeoutDuration: 6s
+        cancelRunningFuture: true
+      StudentsFeignClientcheckAssignmentStringStringInteger:
+        timeoutDuration: 6s
+        cancelRunningFuture: true
+      StudentsFeignClientresolveRateStringStringIntegerIntegerIntegerLocalDate:
+        timeoutDuration: 6s
+        cancelRunningFuture: true
+      CatalogFeignClientfetchSubjectsDetailStringInteger:
+        timeoutDuration: 6s
+        cancelRunningFuture: true
+      CatalogFeignClientfetchLevelDetailStringInteger:
+        timeoutDuration: 6s
+        cancelRunningFuture: true
+      CatalogFeignClientfetchReasonDetailStringInteger:
+        timeoutDuration: 6s
+        cancelRunningFuture: true
+      CatalogFeignClientfetchSourceDetailStringInteger:
+        timeoutDuration: 6s
+        cancelRunningFuture: true
+      CatalogFeignClientfetchServiceDetailStringInteger:
+        timeoutDuration: 6s
+        cancelRunningFuture: true
 
 logging:
   level:
-    org.hibernate.SQL: debug
-    org.hibernate.orm.jdbc.bind: trace
-    root: INFO
+    io.github.resilience4j: DEBUG
+    org.springframework.cloud.circuitbreaker: DEBUG
+    com.massimo.lessons.service.client.StudentsFeignClient: DEBUG
 
-management:
-  endpoints:
-    web:
-      exposure:
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: FULL
 
-        include: "*"
-
+outbox:
+  publisher:
+    fixedDelayMs: 2000
