@@ -35,6 +35,9 @@ spring:
   flyway:
     enabled: true
 
+  profiles:
+    active: "dev"
+
 logging:
   level:
     org.hibernate.SQL: debug
@@ -43,8 +46,7 @@ logging:
   pattern:
     level: "%5p [%X{correlationId}]"
 
-  profiles:
-    active: "dev"
+  
 
 eureka:
   instance:
@@ -60,4 +62,5 @@ management:
     web:
       exposure:
         include: "*"
+
 
