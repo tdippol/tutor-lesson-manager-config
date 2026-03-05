@@ -38,12 +38,16 @@ spring:
   flyway:
     enabled: true
 
-  mail:
-    host: localhost
+    mail:
+    host: mailhog
     port: 1025
+    test-connection: true
     properties:
-      mail.smtp.auth: false
-      mail.smtp.starttls.enable: false
+      mail:
+        smtp:
+          auth: false
+        starttls:
+          enable: false
 
 notification:
   mail:
@@ -73,5 +77,6 @@ management:
     web:
       exposure:
         include: "*"
+
 
 
