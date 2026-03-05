@@ -40,7 +40,7 @@ spring:
     repair: true
 
 
-    mail:
+  mail:
     host: mailhog
     port: 1025
     test-connection: true
@@ -79,5 +79,6 @@ management:
     web:
       exposure:
         include: "*"
+
 
 
